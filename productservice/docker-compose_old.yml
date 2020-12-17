@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  myDb:  
+    image: mysql:5.7
+    container_name: myDb
+    restart: always
+    environment:
+      MYSQL_DATABASE: inventory
+      MYSQL_USER: product
+      MYSQL_PASSWORD: product@123
+      MYSQL_ROOT_PASSWORD: root@123
+    ports:
+       - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql    
+  productservice:
+    image: vinisalgaonkar/productservice:latest
+    container_name: productservice
+    ports:
+      - "9000:9000"
+    depends_on:
+      - myDb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://myDb:3306/inventory?useSSL=false   
+      - SPRING_DATASOURCE_USERNAME=product
+      - SPRING_DATASOURCE_PASSWORD=product@123
+  sampleui:
+    image: sampleui:latest
+    container_name : sampleui
+    ports:
+      - '3000:3000'
+    links:
+      - productservice
+volumes:
+  data:
+    name: data

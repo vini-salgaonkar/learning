@@ -1,0 +1,45 @@
+version: '3.3'
+services:
+  mydb:  
+    image: mysql:5.7
+    networks:
+      - mynw
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'inventory'
+      
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'root'
+      
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'root@123'
+      
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'root@123'
+    ports:
+      
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3308:3308'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - mydb:/var/lib/mysql
+  web-service:
+    image: vinisalgaonkar/productservice
+    ports:
+      - '9000:9000'
+    expose:
+      - '9000'
+    networks:
+      - mynw
+    depends_on:
+      - mydb
+      
+# Names our volume
+volumes:
+  mydb:
+networks:
+  mynw:
+    driver: bridge

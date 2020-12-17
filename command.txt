@@ -1,0 +1,59 @@
+
+
+mvn dockerfile:build -f ./productservice/pom.xml --activate-profiles docker
+mvn dockerfile:build -f ./customerservice/pom.xml --activate-profiles docker
+docker build -t sampleui:latest ./sampleui/
+docker-compose up -d 
+
+
+
+/***************/
+
+#get the currently running processes
+docker ps
+
+
+# shows the list of images
+docker images
+docker image ls 
+
+# shows the list of containers
+docker container ls
+
+# shows the list of containers ( including stopped)
+docker container ls -a
+
+# shows the list of only containers attribute  ( including stopped ) use ful when u want to delete all
+docker container ls -aq
+
+docker container rm  $(docker container ls -aq)
+
+
+
+
+
+
+mvn dockerfile:push  -f ./productservice/pom.xml --activate-profiles docker
+mvn dockerfile:push  -f ./customerservice/pom.xml --activate-profiles docker
+
+
+
+
+ entrypoint:
+      sh -c "
+        echo 'CREATE DATABASE IF NOT EXISTS inventory; CREATE DATABASE IF NOT EXISTS product; CREATE USER IF NOT EXISTS product IDENTIFIED BY "product@123"; CREATE USER IF NOT EXISTS customer IDENTIFIED BY "customer@123"; GRANT ALL ON inventory.* TO "product"@"%"; GRANT ALL ON custormer.* TO "customer"@"%"' > /docker-entrypoint-initdb.d/init.sql;
+        /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      "
+
+
+
+//Retrieve all the files named ".git" and pump them into 'rm -rf'
+//WARNING if you don't understand why/how this command works, DO NOT run it!
+
+( find . -type d -name ".git" \
+  && find . -name ".gitignore" \
+  && find . -name ".gitmodules" ) | xargs rm -rf
+
+//WARNING, if you accidentally pipe a `.` or `/` or other wildcard
+//into xargs rm -rf, then the next question you will have is: "why is
+//the bash ls command not found?  Requiring an OS reinstall.

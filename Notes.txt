@@ -1,0 +1,21 @@
+## Building docker images
+## microservice1
+docker image build -t microservice1 .
+## microservice2
+docker image build -t microservice2 .
+
+## Creating a bridge docker network for inter-networking communication between the two microservices
+## Use "docker network ls" to verify that the new network is created successfully
+docker network create microservice1-microservice2
+
+## Starting docker container on the bridge network created
+### Running the microservice1 on a docker container and exposing port 10091 as
+### springboot application is running on port number- 10091
+docker container run --network microservice1-microservice2 --name microservice1 -p 10091:10091 -d microservice1
+
+### Running the microservice2 on a docker container and exposing port 10092 as
+### springboot application is running on port number- 10092
+docker container run --network microservice1-microservice2 --name microservice2 -p 10092:10092 -d microservice2
+
+## Verifying docker container started successfully
+docker ps -a

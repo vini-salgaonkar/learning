@@ -1,0 +1,17 @@
+package com.sample.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/")
+public class ProductServiceController {
+	
+	
+	@ResponseBody
+	private String home() {
+		return "<h1>This is the Home page</h1>";
+	}
+
+}

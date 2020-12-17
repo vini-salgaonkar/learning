@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/productservice/src/main/java/com/sample/ProductServiceApplication.java"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <mapAttribute key="org.eclipse.debug.core.environmentVariables">
+        <mapEntry key="SPRING_DATASOURCE_PASSWORD" value="customer@123"/>
+        <mapEntry key="SPRING_DATASOURCE_URL&#10;spring.datasource.username=${SPRING_DATASOURCE_USERNAME}&#10;spring.datasource.password=${SPRINT_DATASOURCE_PASSWORD}" value="jdbc:mysql://localhost:3306/customer?useSSL=false&amp;creat"/>
+        <mapEntry key="SPRING_DATASOURCE_USERNAME" value="customer"/>
+        <mapEntry key="spring.profiles.active" value="local"/>
+    </mapAttribute>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.sample.ProductServiceApplication"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="productservice"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="productservice"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+</launchConfiguration>
