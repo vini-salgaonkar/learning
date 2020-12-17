@@ -1,8 +1,0 @@
-1608184192882	Rename type 'ProductServiceApplication'
-1608184239420	Rename type 'ProductServiceController'
-1608184264806	Rename type 'Product'
-1608184309015	Rename type 'ProductRepository'
-1608184420162	Rename type 'ProductService'
-1608184477047	Rename local variable 'product'
-1608184496214	Rename field 'productRepository'
-1608185617461	Rename field 'productService'
