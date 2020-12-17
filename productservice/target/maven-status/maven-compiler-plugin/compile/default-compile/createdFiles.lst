@@ -1,6 +1,0 @@
-com/sample/ProductServiceApplication.class
-com/sample/controller/ProductServiceController.class
-com/sample/service/ProductService.class
-com/sample/entities/ProductRepository.class
-com/sample/SwaggerConfig.class
-com/sample/entities/Product.class
